@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Fragment</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      const ReactFragmentExample = () => (
+        <React.Fragment>
+          <p style={{ color: "red" }}>React is a javascript library</p>
+          <div className="main">
+            <p>Click the below button to alert Hello</p>
+            <button style={{ color: "blue" }} onClick={() => alert("Hello")}>
+              Alert Hello
+            </button>
+          </div>
+        </React.Fragment>
+      );
+      const reactRoot = ReactDOM.createRoot(document.getElementById("root"));
+      reactRoot.render(ReactFragmentExample());
+    </script>
+  </body>
+</html>
