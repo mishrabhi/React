@@ -4,6 +4,74 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Gallery</title>
+    <style>
+      /* Navbar styles */
+      .navbar {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+      }
+
+      .navbar-menu {
+        display: flex;
+      }
+
+      .navbar-item {
+        margin-left: 20px;
+        text-decoration: none;
+        color: white;
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar-hamburger {
+        display: none;
+      }
+
+      .hamburger-icon {
+        font-size: 1.5em;
+        cursor: pointer;
+      }
+
+      @media (max-width: 768px) {
+        .navbar-menu {
+          display: none;
+        }
+
+        .navbar-hamburger {
+          display: block;
+        }
+      }
+
+      /* ImageCard styles */
+      .image-card {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+        transition: transform 0.3s;
+      }
+
+      .image-card img {
+        width: 100%;
+        height: auto;
+      }
+
+      .card-content {
+        padding: 10px;
+      }
+
+      .image-card:hover {
+        transform: scale(1.05);
+      }
+
+      /* Gallery styles */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        padding: 10px;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
