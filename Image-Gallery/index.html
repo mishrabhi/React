@@ -43,7 +43,7 @@
         );
       };
 
-      //ImageCard Component
+      // ImageCard Component
       const ImageCard = ({ title, price }) => {
         return (
           <div className="image-card">
@@ -59,11 +59,31 @@
         );
       };
 
+      // Gallery Component
+      const Gallery = () => {
+        const images = [
+          { title: "Image 1", price: "10.00" },
+          { title: "Image 2", price: "20.00" },
+          { title: "Image 3", price: "30.00" },
+          { title: "Image 4", price: "40.00" },
+          { title: "Image 5", price: "50.00" },
+          { title: "Image 6", price: "60.00" },
+        ];
+
+        return (
+          <div className="gallery">
+            {images.map((image, index) => (
+              <ImageCard key={index} title={image.title} price={image.price} />
+            ))}
+          </div>
+        );
+      };
+
       const App = () => {
         return (
           <>
             <Navbar />
-            <ImageCard />
+            <Gallery />
           </>
         );
       };
