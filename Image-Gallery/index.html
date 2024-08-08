@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      const Navbar = () => {
+        return (
+          <nav className="navbar">
+            <div className="navbar-container">
+              <div className="navbar-menu">
+                <a href="#" className="navbar-item">
+                  Home
+                </a>
+                <a href="#" className="navbar-item">
+                  Gallery
+                </a>
+                <a href="#" className="navbar-item">
+                  Contact
+                </a>
+                <a href="#" className="navbar-item">
+                  About
+                </a>
+              </div>
+              <div className="navbar-hamburger">
+                <span className="hamburger-icon">☰</span>
+              </div>
+            </div>
+          </nav>
+        );
+      };
+
+      const App = () => {
+        return (
+          <>
+            <Navbar />
+          </>
+        );
+      };
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
