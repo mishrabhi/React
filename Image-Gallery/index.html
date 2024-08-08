@@ -43,10 +43,27 @@
         );
       };
 
+      //ImageCard Component
+      const ImageCard = ({ title, price }) => {
+        return (
+          <div className="image-card">
+            <img
+              src={`https://via.placeholder.com/300x200?text=${title}`}
+              alt={title}
+            />
+            <div className="card-content">
+              <h3>{title}</h3>
+              <p>{price}</p>
+            </div>
+          </div>
+        );
+      };
+
       const App = () => {
         return (
           <>
             <Navbar />
+            <ImageCard />
           </>
         );
       };
