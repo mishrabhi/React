@@ -4,6 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz App</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .quiz-app {
+        border-radius: 8px;
+        max-width: 400px;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .question-section {
+        margin-bottom: 20px;
+      }
+
+      .question-count {
+        margin-bottom: 12px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .question-text {
+        font-size: 1.2rem;
+        color: #444;
+      }
+
+      .answer-section button {
+        width: 100%;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .answer-section button:hover {
+        background-color: #0056b3;
+      }
+
+      .score-section {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #28a745;
+      }
+    </style>
   </head>
   <body>
     <script
