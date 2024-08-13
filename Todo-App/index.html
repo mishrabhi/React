@@ -20,29 +20,76 @@
     <script type="text/babel">
       const { useState } = React;
 
-      const [todos, setTodos] = useState([]);
-      const [newTodo, setNewTodo] = useState("");
-      const [filter, setFilter] = useState("All");
+      function TodoApp() {
+        const [todos, setTodos] = useState([]);
+        const [newTodo, setNewTodo] = useState("");
+        const [filter, setFilter] = useState("All");
 
-      const handleAddTodo = () => {
-        if (newTodo.trim()) {
-          setTodo([...todos, { text: newTodo, completed: false }]);
-          setNewTodo("");
-        }
-      };
+        const handleAddTodo = () => {
+          if (newTodo.trim()) {
+            setTodos([...todos, { text: newTodo, completed: false }]);
+            setNewTodo("");
+          }
+        };
 
-      const handleToggleComplete = (index) => {
-        const updatedTodos = [...todos];
-        updatedTodos[index].completed = !updatedTodos[index].completed;
-        setTodos(updateTodo);
-      };
+        const handleToggleComplete = (index) => {
+          const updatedTodos = [...todos];
+          updatedTodos[index].completed = !updatedTodos[index].completed;
+          setTodos(updatedTodos);
+        };
 
-      const handleRemoveTodos = todos.filter((todo) => {
-        if (filter === "All") return true;
-        if (filter === "Completed") return todo.completed;
-        if (filter === "Active") return !todo.completed;
-        return true;
-      });
+        const handleRemoveTodo = (index) => {
+          const updatedTodos = todos.filter((_, i) => i !== index);
+          setTodos(updatedTodos);
+        };
+
+        const filterTodos = todos.filter((todo) => {
+          if (filter === "All") return true;
+          if (filter === "Active") return !todo.completed;
+          if (filter === "Completed") return todo.completed;
+          return true;
+        });
+
+        return (
+          <div className="todo-app">
+            <h1>Todo List</h1>
+            <input
+              type="text"
+              value={newTodo}
+              onChange={(e) => setNewTodo(e.target.value)}
+              placeholder="Add a new Todo"
+            />
+            <button onClick={handleAddTodo}>Add</button>
+
+            <div className="filter-buttons">
+              <button onClick={() => setFilter("All")}>All</button>
+              <button onClick={() => setFilter("Active")}>Active</button>
+              <button onClick={() => setFilter("Completed")}>Completed</button>
+            </div>
+
+            <ul>
+              {filterTodos.map((todo, index) => (
+                <li key={index} className="todo-item">
+                  <span
+                    onClick={() => handleToggleComplete(index)}
+                    className={todo.completed ? "completed" : ""}
+                  >
+                    {todo.text}
+                  </span>
+                  <button
+                    onClick={() => handleRemoveTodo(index)}
+                    className="remove-btn"
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      }
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<TodoApp />);
     </script>
   </body>
 </html>
