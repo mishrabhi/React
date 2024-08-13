@@ -4,7 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo Application</title>
-    <style></style>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      .completed {
+        text-decoration: line-through;
+        color: gray;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
@@ -25,6 +35,7 @@
         const [newTodo, setNewTodo] = useState("");
         const [filter, setFilter] = useState("All");
 
+        //AddTodo
         const handleAddTodo = () => {
           if (newTodo.trim()) {
             setTodos([...todos, { text: newTodo, completed: false }]);
@@ -32,17 +43,22 @@
           }
         };
 
+        //Handle Status
         const handleToggleComplete = (index) => {
           const updatedTodos = [...todos];
           updatedTodos[index].completed = !updatedTodos[index].completed;
           setTodos(updatedTodos);
+          // Logging to check if the state is updating correctly
+          console.log("Toggled todo:", updatedTodos[index]);
         };
 
+        //RemoveTodos
         const handleRemoveTodo = (index) => {
           const updatedTodos = todos.filter((_, i) => i !== index);
           setTodos(updatedTodos);
         };
 
+        //filterTodos
         const filterTodos = todos.filter((todo) => {
           if (filter === "All") return true;
           if (filter === "Active") return !todo.completed;
@@ -50,6 +66,7 @@
           return true;
         });
 
+        //Return
         return (
           <div className="todo-app">
             <h1>Todo List</h1>
@@ -88,6 +105,8 @@
           </div>
         );
       }
+
+      //rendering the todoApp component
       const root = ReactDOM.createRoot(document.getElementById("root"));
       root.render(<TodoApp />);
     </script>
