@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Directory</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Include React and ReactDOM via CDN for quick setup -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- JSX Code -->
+    <script type="text/babel">
+      const { useState, useEffect } = React;
+
+      const UserProfile = ({ user }) => (
+        <div className="user-profile">
+          <h2>{user.name}</h2>
+          <p>Age: {user.age}</p>
+          <p>Occupation: {user.occupation}</p>
+        </div>
+      );
+
+      const UserSearch = ({ onSearch }) => (
+        <input
+          type="text"
+          placeholder="Search users by name"
+          onChange={(e) => onSearch(e.target.value)}
+        />
+      );
+
+      const UserList = ({ users }) => (
+        <div>
+          {users.map((user) => (
+            <UserProfile key={user.id} user={user} />
+          ))}
+        </div>
+      );
+
+      const UserDirectory = () => {
+        const [searchQuery, setSearchQuery] = useState("");
+        const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
+        const users = [
+          { id: 1, name: "John Doe", age: 25, occupation: "Engineer" },
+          { id: 2, name: "Jane Smith", age: 30, occupation: "Designer" },
+          { id: 3, name: "Alice Johnson", age: 28, occupation: "Architect" },
+          { id: 4, name: "Bob Brown", age: 35, occupation: "Developer" },
+        ];
+
+        useEffect(() => {
+          const handler = setTimeout(() => {
+            setDebouncedQuery(searchQuery);
+          }, 300);
+
+          return () => clearTimeout(handler);
+        }, [searchQuery]);
+
+        const filteredUsers = users.filter((user) =>
+          user.name.toLowerCase().includes(debouncedQuery.toLowerCase())
+        );
+
+        return (
+          <div>
+            <UserSearch onSearch={setSearchQuery} />
+            <UserList users={filteredUsers} />
+          </div>
+        );
+      };
+
+      ReactDOM.render(<UserDirectory />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
