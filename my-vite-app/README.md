@@ -1,8 +1,35 @@
-# React + Vite
+# React + Vite(Simple Todo App)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Step-by-step Guide to create a React project using vite:
 
-Currently, two official plugins are available:
+1. Ensure node.js and npm installed in your computer.Use following commands to check your current node and npm version.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+node -v;
+
+npm -v;
+```
+
+2. Create a new Project using terminal:
+
+```
+npm create vite @latest <name-of-project> -- --template react>
+```
+
+3. Navigate to the project
+
+```
+cd <name-of-project>
+```
+
+4. Install dependencies:
+
+```
+npm install
+```
+
+5. Start the development server
+
+```
+npm run dev
+```
