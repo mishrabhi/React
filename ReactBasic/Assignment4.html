@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Handling in JSX</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      const App = () => {
+        return (
+          <>
+            <div
+              style={{
+                border: "1px solid black",
+                borderRadius: "10px",
+                padding: "20px",
+                maxWidth: "400px",
+                textAlign: "center",
+                margin: "50px auto",
+              }}
+            >
+              <img
+                style={{
+                  width: "100px",
+                  marginBottom: "5px",
+                }}
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-fFiCTtRckOX7KSc9x6VjDHqGYz6ZO7J1Jg&s"
+              />
+              <h2>Subscribe</h2>
+              <p>Subscribe to our newsletter & stay upto date!</p>
+              <input
+                type="text"
+                placeholder="john@doe.net"
+                style={{
+                  width: "180px",
+                  margin: "10px 5px 10px 0",
+                  padding: "10px",
+                  border: "1px solid black",
+                  borderRadius: "15px",
+                }}
+              />
+              <button
+                style={{
+                  padding: "10px 20px",
+                  backgroundColor: "blue",
+                  borderRadius: "10px",
+                  color: "white",
+                  cursor: "pointer",
+                  border: "none",
+                }}
+              >
+                Subscribe
+              </button>
+            </div>
+          </>
+        );
+      };
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
