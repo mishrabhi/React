@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Props and Components</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      const StepCard = ({ number, title, description }) => {
+        return (
+          <div className="step-card">
+            <div className="step-number">{number}</div>
+            <div className="step-title">{title}</div>
+            <div className="step-description">{description}</div>
+          </div>
+        );
+      };
+
+      const StepList = () => {
+        const steps = [
+          {
+            number: "01",
+            title: "Find your template",
+            description:
+              "Every template is embedded within an iframe, so you can easily check what they look like and test the responsive behaviour.",
+          },
+          {
+            number: "02",
+            title: "Copy the code",
+            description:
+              "Click the code tab to see the actual source code of the template. Copy and paste it into your project and adjust it to your needs.",
+          },
+          {
+            number: "03",
+            title: "Enjoy your free time",
+            description:
+              "You've just saved yourself a bunch of time not building the same stuff over and over again. Enjoy your free time, and build business features.",
+          },
+        ];
+
+        return (
+          <div className="step-list">
+            <h1>Getting started in 3 easy steps</h1>
+            {steps.map((step, index) => (
+              <StepCard key={index} {...step} />
+            ))}
+          </div>
+        );
+      };
+
+      const App = () => {
+        return <StepList />;
+      };
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
