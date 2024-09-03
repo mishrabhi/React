@@ -48,7 +48,7 @@
           const updatedTodos = [...todos];
           updatedTodos[index].completed = !updatedTodos[index].completed;
           setTodos(updatedTodos);
-          // Logging to check if the state is updating correctly
+          // Logging on console to check if the state is updating correctly
           console.log("Toggled todo:", updatedTodos[index]);
         };
 
@@ -87,6 +87,11 @@
             <ul>
               {filterTodos.map((todo, index) => (
                 <li key={index} className="todo-item">
+                  <input
+                    type="checkbox"
+                    checked={todo.completed}
+                    onChange={() => handleToggleComplete(index)}
+                  />
                   <span
                     onClick={() => handleToggleComplete(index)}
                     className={todo.completed ? "completed" : ""}
