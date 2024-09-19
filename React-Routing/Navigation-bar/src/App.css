@@ -1,0 +1,6 @@
+.navbar-container {
+  display: flex;
+  background-color: aquamarine;
+  padding: 20px;
+  justify-content: space-between;
+}
